@@ -35,8 +35,10 @@ KERNEL_BIN  = iso/boot/triumpos.bin
 ISO_FILE    = build/triumpos.iso
 
 # ── Source Files ────────────────────────────────────────────
-ASM_SOURCES = boot/entry.asm
-C_SOURCES   = kernel/kernel.c
+ASM_SOURCES = boot/entry.asm \
+              boot/gdt_flush.asm
+C_SOURCES   = kernel/kernel.c \
+              kernel/gdt.c
 
 # ── Object Files ────────────────────────────────────────────
 ASM_OBJECTS = $(ASM_SOURCES:.asm=.o)

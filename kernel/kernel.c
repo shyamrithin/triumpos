@@ -10,6 +10,7 @@
 
 #include <stdint.h>
 #include <stddef.h>
+#include "gdt.h"
 
 /* ── VGA Constants ─────────────────────────────────────────── */
 #define VGA_ADDRESS     0xB8000     /* Physical address of VGA text buffer */
@@ -126,6 +127,15 @@ void vga_print_color(const char* str, vga_color fg, vga_color bg) {
 void kernel_main(void) {
     vga_init();
 
+    /* ── Boot log ───────────────────────────────────────────── */
+    vga_print_color("[  OK  ] ", COLOR_LIGHT_GREEN, COLOR_BLACK);
+    vga_print("Loading GDT...\n");
+    gdt_init();
+    vga_print_color("[  OK  ] ", COLOR_LIGHT_GREEN, COLOR_BLACK);
+    vga_print("GDT loaded successfully.\n");
+
+    /* ── Welcome banner ─────────────────────────────────────── */
+    vga_print("\n");
     vga_print_color("Triumph OS\n", COLOR_YELLOW, COLOR_BLACK);
     vga_print_color("===========\n", COLOR_DARK_GREY, COLOR_BLACK);
     vga_print("Kernel booted successfully.\n");
