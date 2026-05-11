@@ -1,0 +1,5 @@
+build/
+iso/boot/triumpos.bin
+*.o
+*.bin
+
