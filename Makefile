@@ -19,6 +19,7 @@ CFLAGS  = -m32 \
            -fno-builtin \
            -nostdlib \
            -nostdinc \
+		   -isystem /usr/lib/gcc/x86_64-linux-gnu/11/include \
            -Wall \
            -Wextra \
            -Ikernel
